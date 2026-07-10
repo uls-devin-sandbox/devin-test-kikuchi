@@ -55,24 +55,24 @@ namespace TodoApp.WinForms
 
             // 入力エリア
             var lblTitle = new Label { Text = "タイトル:", Location = new Point(12, 15), AutoSize = true };
-            _txtTitle = new TextBox { Location = new Point(80, 12), Size = new Size(200, 20), Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right };
+            _txtTitle = new TextBox { Location = new Point(80, 12), Size = new Size(200, 20), Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right, AccessibleName = "TitleTextBox" };
 
             var lblDueDate = new Label { Text = "期限:", Location = new Point(300, 15), AutoSize = true };
-            _dtpDueDate = new DateTimePicker { Location = new Point(350, 12), Size = new Size(120, 20), Format = DateTimePickerFormat.Short, Anchor = AnchorStyles.Top | AnchorStyles.Right };
+            _dtpDueDate = new DateTimePicker { Location = new Point(350, 12), Size = new Size(120, 20), Format = DateTimePickerFormat.Short, Anchor = AnchorStyles.Top | AnchorStyles.Right, AccessibleName = "DueDatePicker" };
 
             var lblPriority = new Label { Text = "優先度:", Location = new Point(490, 15), AutoSize = true };
-            _cmbPriority = new ComboBox { Location = new Point(550, 12), Size = new Size(80, 20), DropDownStyle = ComboBoxStyle.DropDownList, Anchor = AnchorStyles.Top | AnchorStyles.Right };
+            _cmbPriority = new ComboBox { Location = new Point(550, 12), Size = new Size(80, 20), DropDownStyle = ComboBoxStyle.DropDownList, Anchor = AnchorStyles.Top | AnchorStyles.Right, AccessibleName = "PriorityComboBox" };
             _cmbPriority.Items.AddRange(new object[] { "高", "中", "低" });
 
-            _btnAdd = new Button { Text = "追加", Location = new Point(640, 10), Size = new Size(60, 25), Anchor = AnchorStyles.Top | AnchorStyles.Right };
+            _btnAdd = new Button { Text = "追加", Location = new Point(640, 10), Size = new Size(60, 25), Anchor = AnchorStyles.Top | AnchorStyles.Right, AccessibleName = "AddButton" };
             _btnAdd.Click += BtnAdd_Click;
 
-            _btnCancel = new Button { Text = "キャンセル", Location = new Point(710, 10), Size = new Size(60, 25), Anchor = AnchorStyles.Top | AnchorStyles.Right };
+            _btnCancel = new Button { Text = "キャンセル", Location = new Point(710, 10), Size = new Size(60, 25), Anchor = AnchorStyles.Top | AnchorStyles.Right, AccessibleName = "CancelButton" };
             _btnCancel.Click += BtnCancel_Click;
 
             // フィルタ
             var lblFilter = new Label { Text = "フィルタ:", Location = new Point(12, 50), AutoSize = true };
-            _cmbFilter = new ComboBox { Location = new Point(80, 47), Size = new Size(100, 20), DropDownStyle = ComboBoxStyle.DropDownList, Anchor = AnchorStyles.Top | AnchorStyles.Left };
+            _cmbFilter = new ComboBox { Location = new Point(80, 47), Size = new Size(100, 20), DropDownStyle = ComboBoxStyle.DropDownList, Anchor = AnchorStyles.Top | AnchorStyles.Left, AccessibleName = "FilterComboBox" };
             _cmbFilter.Items.AddRange(new object[] { "全て", "未完了", "完了" });
             _cmbFilter.SelectedIndex = 0;
             _cmbFilter.SelectedIndexChanged += CmbFilter_SelectedIndexChanged;
@@ -89,7 +89,8 @@ namespace TodoApp.WinForms
                 ReadOnly = true,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
                 MultiSelect = false,
-                ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+                ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize,
+                AccessibleName = "TasksGridView"
             };
 
             var colId = new DataGridViewTextBoxColumn { DataPropertyName = "Id", Name = "colId", Visible = false };
@@ -103,13 +104,13 @@ namespace TodoApp.WinForms
             _dgvTasks.CellFormatting += DgvTasks_CellFormatting;
 
             // 操作ボタン
-            _btnEdit = new Button { Text = "編集", Location = new Point(12, 490), Size = new Size(80, 30), Anchor = AnchorStyles.Bottom | AnchorStyles.Left };
+            _btnEdit = new Button { Text = "編集", Location = new Point(12, 490), Size = new Size(80, 30), Anchor = AnchorStyles.Bottom | AnchorStyles.Left, AccessibleName = "EditButton" };
             _btnEdit.Click += BtnEdit_Click;
 
-            _btnDelete = new Button { Text = "削除", Location = new Point(100, 490), Size = new Size(80, 30), Anchor = AnchorStyles.Bottom | AnchorStyles.Left };
+            _btnDelete = new Button { Text = "削除", Location = new Point(100, 490), Size = new Size(80, 30), Anchor = AnchorStyles.Bottom | AnchorStyles.Left, AccessibleName = "DeleteButton" };
             _btnDelete.Click += BtnDelete_Click;
 
-            _btnToggle = new Button { Text = "完了/未完了", Location = new Point(190, 490), Size = new Size(100, 30), Anchor = AnchorStyles.Bottom | AnchorStyles.Left };
+            _btnToggle = new Button { Text = "完了/未完了", Location = new Point(190, 490), Size = new Size(100, 30), Anchor = AnchorStyles.Bottom | AnchorStyles.Left, AccessibleName = "ToggleButton" };
             _btnToggle.Click += BtnToggle_Click;
 
             Controls.Add(lblTitle);
